@@ -1,0 +1,73 @@
+
+<html>
+<head>
+	
+	<!-- JQuery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+	<!-- My Scripts -->
+	
+	<script type="text/javascript" src="{{ url_for('static', filename = 'gi-market.js') }}"></script>
+
+	<script>
+		
+
+	</script>
+
+
+	<style>
+
+	</style>
+
+	
+</head>
+<body>
+
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Gi Market!</h1>      
+  </div> 
+
+
+	<div id="logsales" >
+		 
+	<div class="row">
+		<div class="col-md-2">
+			Add a new Gi:
+		</div>
+		<div class="col-md-4">	
+			<div class="ui-widget">		
+				<input type="text"  id="enter_client" placeholder="Client" >
+			</div>
+		</div>
+		<div class="col-md-2">
+			<input type="text" id="enter_reams" placeholder="# Reams" >
+		</div>
+		<button class="btn btn-primary" id="submit_sale">Submit</button>
+
+	</div>
+	<br>
+
+	<div id="gi-list">
+    {% for gi in gi_list %}
+        <p> {{ gi.id }} </p>
+        <p> {{ gi.seller }} </p>
+        <p> {{ gi.name }} </p>
+        <p> {{ gi.description }} </p>
+        <p> {{ gi.price }} </p>
+        <p> {{ gi.image_url }} </p>
+    {% endfor %}
+	</div>
+
+    </div> <!-- end logsales-->
+
+</div>
+
+</body>
+</html>

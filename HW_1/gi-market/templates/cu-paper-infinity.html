@@ -1,0 +1,66 @@
+<html>
+<head>
+	
+	<!-- JQuery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+	<!-- My Scripts -->
+	
+	<script type="text/javascript" src="{{ url_for('static', filename = 'cu-paper-infinity.js') }}"></script>
+
+	<script>
+		
+
+		sales = {{sales|tojson}}
+
+		clients = {{clients|tojson}}
+	</script>
+
+
+	<style>
+
+
+		#logsales{
+			height: 100px;
+
+		}
+
+		#enter_client{
+			width:100%;
+		}
+
+		.bottom_row_padding{
+			padding-bottom: 5px;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Columbia Paper Infinity</h1>      
+  </div> 
+
+
+	<div id="logsales" >
+		 
+	<div class="row">
+    </div>
+	<br>
+
+	<div id="sales">
+	</div>
+	</div>
+
+</div>
+
+</body>
+</html>
