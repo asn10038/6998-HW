@@ -6,7 +6,7 @@
 function getGiRowHTML(gi) {
     res = '<div class="row giRow"> ' 
                 +'<div class="col-md-2">'
-                + 'nonsense'
+                + "<img class='tinyImage' src='" + gi["image_url"] + "'></img>"
                 + '</div>'
                 + '<div class="col-md-8"> '
                    +   '<ul>'
@@ -21,10 +21,12 @@ function getGiRowHTML(gi) {
                     + '<button type="button" class="btn btn-primary edit-button" data-id="' + gi["id"] + '">Edit</button>' 
                 + '</div>'
            + '</div>'
+           + '<hr>'
 
     return res;
-           
 }
+           
+
 
 function fillUpdateForm(id) {
     entry = {}
@@ -41,6 +43,7 @@ function fillUpdateForm(id) {
     name = entry["name"]
     description = entry["description"]
     price = entry["price"]
+    image_url = entry["image_url"]
 
     $('#update-id').text(id);
     
@@ -48,7 +51,7 @@ function fillUpdateForm(id) {
     $('#update-name').val(name);
     $('#update-description').val(description);
     $('#update-price').val(price);
-    $('#update-image-url').val(" CAN'T BE CHANGED ");
+    $('#update-image-url').val(image_url);
     
 }
 
