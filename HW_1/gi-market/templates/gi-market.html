@@ -15,12 +15,15 @@
 	<script type="text/javascript" src="{{ url_for('static', filename = 'gi-market.js') }}"></script>
 
 	<script>
-		
+        gi_list = {{ gi_list | tojson }}
 
 	</script>
 
 
 	<style>
+        .giRow {
+            height: 200px;
+        }
 
 	</style>
 
@@ -32,37 +35,44 @@
 <div class="container">
   <div class="jumbotron">
     <h1>Gi Market!</h1>      
+    <input type="search" placeholder="search" id="search-box"> </input>
+    <button class="btn btn-primary" id="search-button">Search</button>
   </div> 
 
 
-	<div id="logsales" >
+	<div id="giLog" >
 		 
 	<div class="row">
 		<div class="col-md-2">
-			Add a new Gi:
+			<span id="form-text"> Add a new Gi: </span>
 		</div>
 		<div class="col-md-4">	
 			<div class="ui-widget">		
-				<input type="text"  id="enter_client" placeholder="Client" >
+				<input type="text"  id="enter-seller" placeholder="Seller" >
+				<input type="text"  id="enter-name" placeholder="Name" >
+				<input type="text"  id="enter-description" placeholder="Description" >
+				<input type="text"  id="enter-price" placeholder="Price" >
+				<input type="text"  id="enter-image-url" placeholder="image-url" >
 			</div>
+		    <button class="btn btn-primary" id="submit-gi">Create</button>
 		</div>
-		<div class="col-md-2">
-			<input type="text" id="enter_reams" placeholder="# Reams" >
+
+		<div class="col-md-4">	
+			<div class="ui-widget">		
+				<input type="text"  id="update-seller" placeholder="Seller" >
+				<input type="text"  id="update-name" placeholder="Name" >
+				<input type="text"  id="update-description" placeholder="Description" >
+				<input type="text"  id="update-price" placeholder="Price" >
+				<input type="text"  id="update-image-url" placeholder="image-url" >
+                <button class="btn btn-primary" id="update-gi">Update</button>
+			</div>
+                <p> Gi ID: <span id="update-id"> </span></p>
 		</div>
-		<button class="btn btn-primary" id="submit_sale">Submit</button>
 
 	</div>
 	<br>
 
 	<div id="gi-list">
-    {% for gi in gi_list %}
-        <p> {{ gi.id }} </p>
-        <p> {{ gi.seller }} </p>
-        <p> {{ gi.name }} </p>
-        <p> {{ gi.description }} </p>
-        <p> {{ gi.price }} </p>
-        <p> {{ gi.image_url }} </p>
-    {% endfor %}
 	</div>
 
     </div> <!-- end logsales-->

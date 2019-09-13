@@ -29,7 +29,7 @@ gis = [
         "seller": "James D. Halpert",
         "name": "Fuji Judo Uniform",
         "description": "soft 100% cotton high quality stitching competitively priced",
-        "price": 39,
+        "price": 38,
         "image_url": "https://images-na.ssl-images-amazon.com/images/I/71FgDhKTzCL._SL1500_.jpg"
     }
 ]
@@ -60,28 +60,22 @@ def gi_market():
 def create_gi():
     print("create_gi")
     global gis
+    global current_id
 
-    #UPDATES SALES
     gi_data = request.get_json()    
     gi_data["id"] = current_id
     current_id += 1
-    gis.append(sale_data)
+    gis.append(gi_data)
 
     return jsonify(gi_list=gis)
 
-@app.route('/update_gi')
+@app.route('/update_gi', methods=['GET', 'POST'])
 def gi_update():
-        "id": 2, 
-        "seller": "James D. Halpert",
-        "name": "Fuji Judo Uniform",
-        "description": "soft 100% cotton high quality stitching competitively priced",
-        "price": 39,
-        "image_url": "https://images-na.ssl-images-amazon.com/images/I/71FgDhKTzCL._SL1500_.jpg"
     global gis
     print("update gi")
 
     update_json = request.get_json()
-    update_id = int(id_json["id"])
+    update_id = int(update_json["id"])
 
     for item in gis:
         if item["id"] == update_id:
@@ -93,14 +87,16 @@ def gi_update():
 
     return jsonify(gi_list=gis)
 
-@app.route('/delete_gi')
+@app.route('/delete_gi', methods=['GET', 'POST'])
 def gi_delete():
     global gis
 
     id_json = request.get_json()
+    print(id_json)
     delete_id = int(id_json["id"])
     print("delete_sale id: {}".format(delete_id))
 
+    
     index_to_delete = None
     for (i, s) in enumerate(gis):
         if s["id"] == delete_id:
@@ -115,14 +111,26 @@ def gi_delete():
         del gis[index_to_delete]
     
     print("new gi array")
-    print(gis)
+    return jsonify(gi_list = gis)
+    
 
-    return render_template('gi-market.html', gi_list=gis)
-
-@app.route('/search_gi')
+@app.route('/search_gi', methods=['GET', 'POST'])
 def gi_search():
-    print("Not implemented")
-    return render_template('gi-market.html')
+    res = []  
+    ids = set()
+    query_json = request.get_json()
+    print(query_json)
+    query = query_json["query"]
+    print(query)
+    for ind, gi in enumerate(gis):
+        for item in gi:
+            print(query + " : " + str(gi[item]))
+            if query in str(gi[item]):
+                print("adding")
+                ids.add(ind)
+    for num in ids:
+        res.append(gis[num])
+    return jsonify(gi_list = res) 
 
 @app.route('/infinity')
 def infinity():
@@ -196,7 +204,7 @@ def delete_sale():
     return jsonify(sales = sales)
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.run(debug=True, host='128.59.21.103')
 
 
 
