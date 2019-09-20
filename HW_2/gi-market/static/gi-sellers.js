@@ -103,6 +103,7 @@ function updateGi(id) {
 
 }
 
+
 function newGi() {
     name = $('#enter-name').val();
     description = $('#enter-description').val();
@@ -147,7 +148,7 @@ function deleteGi(id) {
 	        url: "/delete_gi",                
 	        dataType : "json",
 	        contentType: "application/json; charset=utf-8",
-	        data : JSON.stringify({"id": id}),
+	        data : JSON.stringify({"id": id, "seller": seller} ),
 		    success: function(data, text){
                 gi_list = data["gi_list"];
                 displayGis(gi_list);

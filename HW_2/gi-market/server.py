@@ -303,18 +303,17 @@ def gi_update():
 
     update_json = request.get_json()
     update_id = int(update_json["id"])
-    seller_gis = ""
 
     for item in gis:
         if item["id"] == update_id:
             item["seller"] = update_json["seller"]
-            seller_gis = get_gis_by_seller(item["seller"])
             item["name"] = update_json["name"]
             item["description"] = update_json["description"]
             item["price"] =int(update_json["price"])
             item["image_url"] = update_json["image_url"]
+            break
 
-    return jsonify(gi_list=seller_gis)
+    return jsonify(gi_list=get_gis_by_seller(item["seller"]))
 
 @app.route('/delete_gi', methods=['GET', 'POST'])
 def gi_delete():
@@ -339,8 +338,8 @@ def gi_delete():
         print("deleting: ", index_to_delete)
         del gis[index_to_delete]
     
-    print("new gi array")
-    return jsonify(gi_list = gis)
+    new_list = get_gis_by_seller(id_json['seller'])
+    return jsonify(gi_list = new_list)
     
 
 @app.route('/search/<query_string>', methods=['GET', 'POST'])
@@ -383,47 +382,6 @@ def save_sale():
 
 
     return jsonify(sales = sales, clients = clients)
-
-
-@app.route('/delete_sale', methods=['GET', 'POST'])
-def delete_sale():
-    print("delete_sale")
-    global sales
-    global client
-    #global current_id   
-
-
-    id_json = request.get_json()
-    print(id_json)
-    #sale_data["id"] = current_id
-    
-    delete_id = int(id_json["id"])
-    print(delete_id)
-
-    # find the sales record with this id, and delete it.
-    index_to_delete = None
-    for (i, s) in enumerate(sales):
-        s_id = s["id"]
-        print(s["id"])
-        if s_id == delete_id:
-            print("found it: ")
-            print(i, s)
-            index_to_delete = i
-
-            break
-
-
-    if index_to_delete is not None:
-        print("deleting: ", index_to_delete)
-        del sales[index_to_delete]
-    
-    print("new sales array")
-    print(sales)
-
-
-    #sales.append(sale_data)
-
-    return jsonify(sales = sales)
 
 if __name__ == '__main__':
    app.run(debug=True, host='128.59.21.103')
