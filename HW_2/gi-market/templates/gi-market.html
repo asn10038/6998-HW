@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+	<script> gi_list = {{ gi_list | tojson }} </script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'gi-market.js') }}"></script>
+{% endblock %}
+
+{% block style %}
+
+  .giRow {
+    /* height: 200px; */
+  }
+  .tinyImage {
+    height: 150px;
+    width: 150px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .infoLabel {
+    color: grey;
+    font-size: 12px;
+  }
+                                                          
+  .buyButton {
+    margin-top: 50px;
+  }
+{% endblock %}
+
+{% block content %}
+<div class=container>
+
+	<div id="giLog" >
+	<br>
+    <hr>
+
+	<div id="gi-list">
+	</div>
+
+    </div> <!-- end logsales-->
+    </div>
+
+        <!-- Modal for the sellers link -->
+        <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buy Success!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ITEM PURCHASED 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+             </div>
+             
+          </div>
+        </div>
+
+</div>
+{% endblock %}

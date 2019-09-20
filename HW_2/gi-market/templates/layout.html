@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+    <head>
+        {% block head %}
+        <!-- JQuery -->
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>	
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- My Scripts -->
+        
+        <script type="text/javascript" src="{{ url_for('static', filename = 'layout.js') }}"></script>
+        
+        {% block scripts %}
+        {% endblock %}
+
+        <style>
+            {% block style %}
+            {% endblock %}
+        </style>
+
+        {% endblock %}
+
+    </head>
+    <body>
+    <header>
+          <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
+            <a class="navbar-brand" href="./home">Gi-Market</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto" id="nav-ul">
+                <li class="nav-item " id='home-nav-item'>
+                  <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" id='market-nav-item'>
+                  <a class="nav-link" href="/gi-market">Market</a>
+                </li>
+                <li class="nav-item" id='sales-nav-item'>
+                  <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal" >Your Sales</a>
+                </li>
+              </ul>
+              <div class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" id='search-box' aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="home-search">Search</button>
+              </div>
+            </div>
+          </nav>
+        </header>
+
+        <main role="main">
+
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <!-- Modal for the sellers link -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Seller Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <input type="text" id="seller-name-input" class="form-control" placeholder="seller-name" aria-label="seller-name" aria-describedby="basic-addon1">
+                    </div>
+                    <p> NOT REQUIRING PASSWORD RIGHT NOW <p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="go-to-seller-button" class="btn btn-primary">Go to Seller Profile </button>
+                </div>
+             </div>
+             
+          </div>
+        </div>
+                                                                                                                 
+    </body>
+
+</html>

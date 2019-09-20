@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 # INFINITY
-current_id = 4
+current_id = 31 
 
 gis = [
     {
@@ -254,15 +254,34 @@ gis = [
 
 ]
 
-
+def get_gis_by_seller(seller):
+    print("SELLER IS "+ seller) 
+    res = []
+    for gi in gis:
+        if gi['seller'] == seller:
+            res.append(gi)
+    return res
+    
 @app.route('/')
 def hello_world():
    return 'Hello World'
+
+@app.route('/home')
+def home_page():
+    return render_template('gi-market-home.html', gi_list=gis)
 
 
 @app.route('/gi-market')
 def gi_market():
     return render_template('gi-market.html', gi_list=gis)
+
+@app.route('/gi-sellers/<seller_name>')
+def gi_sellers(seller_name):
+    res = []
+    for gi in gis:
+        if gi['seller'].lower() == seller_name.lower():
+            res.append(gi)
+    return render_template('gi-sellers.html', gi_list=res, seller=seller_name)
 
 @app.route('/create_gi', methods=['GET', 'POST'])
 def create_gi():
@@ -284,16 +303,18 @@ def gi_update():
 
     update_json = request.get_json()
     update_id = int(update_json["id"])
+    seller_gis = ""
 
     for item in gis:
         if item["id"] == update_id:
             item["seller"] = update_json["seller"]
+            seller_gis = get_gis_by_seller(item["seller"])
             item["name"] = update_json["name"]
             item["description"] = update_json["description"]
             item["price"] =int(update_json["price"])
             item["image_url"] = update_json["image_url"]
 
-    return jsonify(gi_list=gis)
+    return jsonify(gi_list=seller_gis)
 
 @app.route('/delete_gi', methods=['GET', 'POST'])
 def gi_delete():
@@ -322,27 +343,20 @@ def gi_delete():
     return jsonify(gi_list = gis)
     
 
-@app.route('/search_gi', methods=['GET', 'POST'])
-def gi_search():
-    res = []  
+@app.route('/search/<query_string>', methods=['GET', 'POST'])
+def gi_search(query_string):
+    res = []
     ids = set()
-    query_json = request.get_json()
-    print(query_json)
-    query = query_json["query"]
-    print(query)
+    query = query_string
     for ind, gi in enumerate(gis):
         for item in gi:
-            print(query + " : " + str(gi[item]))
             if query in str(gi[item]):
                 print("adding")
                 ids.add(ind)
     for num in ids:
         res.append(gis[num])
-    return jsonify(gi_list = res) 
-
-@app.route('/infinity')
-def infinity():
-   return render_template('cu-paper-infinity.html', sales = sales, clients = clients)
+    print (" I MADE IT HERE")
+    return render_template('gi-market.html', gi_list=res)
 
 @app.route('/save_sale', methods=['GET', 'POST'])
 def save_sale():

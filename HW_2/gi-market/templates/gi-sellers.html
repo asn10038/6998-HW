@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block style %}
+  .giRow {
+    /* height: 200px; */
+  }
+  .tinyImage {
+    height: 150px;
+    width: 150px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .infoLabel {
+    color: grey;
+    font-size: 12px;
+  }
+                                                          
+  .buyButton {
+    margin-top: 50px;
+  }
+
+  .action-buttons {
+    margin-top: 50px;
+  }
+
+  .form-label {
+    color: grey;
+    font-size: 14px;
+  }
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename = 'gi-sellers.js') }}"></script>
+	<script>
+        gi_list = {{ gi_list | tojson }};
+        seller = {{ seller | tojson }}
+     </script>
+{% endblock %}
+
+{% block content %}
+<div class="container"> 
+	<div id="gi-list">
+	</div>
+
+    
+    <!-- Modal for the sellers link -->
+    <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Buy Success!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ITEM PURCHASED 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+         
+      </div>
+    </div>
+ 
+ <!-- Modal for the Edit link -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                      <p> <span class="form-label"> Seller: </span> <strong> {{ seller }}</strong> </p>
+                      <label for="update-name"> <span class="form-label"> Gi Name</span></label>
+                      <input type="text" class="form-control" id="update-name"  placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                      <label for="update-description"><span class="form-label"> Description</span></label>
+                      <input type="text" class="form-control" id="update-description" placeholder="Enter description">
+                  </div>
+                  <div class="form-group">
+                      <label for="update-price"><span class="form-label"> Price in USD</span></label>
+                      <input type="text" class="form-control" id="update-price" placeholder="Enter price">
+                  </div>
+                  <div class="form-group">
+                      <label for="update-image-url"> <span class="form-label"> Image URL</span></label>
+                      <input type="text" class="form-control" id="update-image-url" placeholder="Enter Image URL">
+                  </div>
+                  <div class="form-group">
+                      <p> <span class="form-label"> Gi ID: </span> <strong> <span id="update-id"> </span></strong> </p>
+                  </div>
+                        <button class="btn btn-primary" id="update-gi">Update</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+         
+      </div>
+    </div>
+
+ <!-- Modal for the Create link -->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                  <div class="form-group">
+                      <p> <span class="form-label"> Seller: </span> <strong> {{ seller }}</strong> </p>
+                      <label for="enter-name"> <span class="form-label"> Gi Name</span></label>
+                      <input type="text" class="form-control" id="enter-name"  placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                      <label for="enter-description"><span class="form-label"> Description</span></label>
+                      <input type="text" class="form-control" id="enter-descrption" placeholder="Enter description">
+                  </div>
+                  <div class="form-group">
+                      <label for="enter-price"><span class="form-label"> Price in USD</span></label>
+                      <input type="text" class="form-control" id="enter-price" placeholder="Enter price">
+                  </div>
+                  <div class="form-group">
+                      <label for="enter-price"> <span class="form-label"> Image URL</span></label>
+                      <input type="text" class="form-control" id="enter-image-url" placeholder="Enter Image URL">
+                  </div>
+                  <button class="btn btn-primary" id="submit-gi">Create</button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+         
+      </div>
+    </div>
+
+</div>
+
+{% endblock %}
