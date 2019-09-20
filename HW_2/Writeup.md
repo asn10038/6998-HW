@@ -1,99 +1,42 @@
-# Homework 1 Writeup
----
+# Homework 2 Writeup
 
-### Part 2
+### What Data is being provided and consumed?
+Information about Gi's is being provided and consumed. The price, maker, description etc. and customers can buy those Gi's if they want.
 
-#### What data is being provided and consumed?
-  People are providing and consuming information about Jiu Jitsu Gi's.
+### What real world goal drives this need?
+There are many people who have small gyms and associations who make Gi's but there is no central platform that caters to both big and small providers so that everyone has a chance to sell their wares equally.
 
-#### What real world goal drives this need?
-  Gis are a niche item without a uniform place to shop independent of amazon which doesn't carry some of the niche providers products. When people need to buy gis they need somewhere to look.
+### What aspect of this is hard?
+A friend of mine who was selling Gi's at his gym was told that he couldn't since the gym had their own brand that they wanted to sell. He was told he might get thrown out of the gym after training there almost 10 years!
 
-#### What is the provider persona?
-  The provider is a person who produces gis full time for a living or on the side. They need somewhere to advertise the gis they are selling so customers can buy them.
+### Person A -- The provider
+
+#### Persona
+Omar is a 35 year old black belt in Jiu Jitsu who works full time running a series of cell phone stores. Now that he has achieved black belt status he would like to start his own gym, and offer his own line of Gi's through his gym. In order to get customers and clients he needs a way to market his stuff and make it available.
 
 #### When and how do they provide it?
-  They provide information about the gis when they are ready to sell their wares and can do so by going onto the cite and creating a new gi for sale.
+Omar can go onto the site and provide all the information required about the gi's as needed for people to buy them by filling out the correct form.
 
-#### What real world goal does it help person A achieve?
-  Person A can successfully sell their products.
+#### What real goal does person A achieve?
+Omar can sell his personal Gi to both friends and strangers. In this way he can build a client base and make some extra $.
 
-#### Consumer persona
-  The consumer is someone who practices Jiu Jitsu most likely as a hobbyist, or is the parent of a child who practices jiu jitsu.
+#### What subgoals and states does person A go through?
+1) Person A has to log into the system to let the site know which seller needs write permissions.
+2) Person A has to edit existing Gis available for purchase as demand fluctuates
+3) Person A needs to create a new Gi when they have new wares to sell
 
-#### When and how do they consume this data?
-  They consume this data when they need to buy a new gi, and they can consume it by scrolling through the site.
+### Person B -- The consumer
 
-#### What real world goal does this help the consumer achieve?
-  They are able to buy the gi they want when their old gi is insufficient.
+#### Persona
+Justin is a 23 year old student who hasn't practiced Jiu Jitsu but would like to start. He needs to find a gi to buy before he can begin training.
 
-### Part 3 -- 10 on campus groups
+#### When and how to consume data?
+Justin consumes data when he logs on to the site and views the Gi's that are available for sale. When he finds one that he likes he can consume the data by choosing to purchase it.
 
-#### PhD Students Looking for a Conference
-* Their goal is to know when the deadlines for relevant upcoming conferences are.
-* Shirish in my office
-* Googling relevant conferences
-* Emailing people who have submitted to the same conference
-* Googling papers that have been submitted at that conference in the recent past
+#### What real world goal does person B achieve
+Person B is able to buy a Gi that they need to train
 
-#### Faculty Members
-* They want to know which department meetings they have to show up to and which they can skip
-* Gail Kaiser
-* Emailing other professors to see who's going
-* Checking Calendars to see when the meeting is
-* Reviewing the slides/notes of the meeting to see what happened
-
-#### Lost Freshman
-* They are trying to find the class they want to go to
-* Zach Chen
-* Looking on the phone for directions to the building they want to get to
-* Checking into ssol for the abbreviations list of what abbreviations stand for What
-* Texting friends who are in the same class looking for directions
-
-#### Class Members looking for Partners
-* People in a class would like to try and find a partner who is compatible to work with throughout the semester on a project
-* Saikat Chakraboty
-* Posting on Piazza looking for a teammate
-* Texting friends for referalls
-* Often emailing likely candidates for more in depth discussion
-
-#### Columbia Gym Goers
-* They would like to go to the gym when it is open and least crowded
-* Shirish Singh
-* Texting friends who went to the gym recently to see what the atmosphere is like
-* Googling the class schedules in the gym to see if there are activities going on which take up space
-* Checking the website for hours open
-
-#### Graduate Student Alumni
-* Some graduate students would like to remain in touch with the people they worked with and stay up to date on the publications and activities of their previous lab
-* Riley Spahn
-* Texting lab members to say hello
-* Checking Facebook and conference proceedings for familiar names
-* Staying a part of group messaging apps like Slack channels and email groups
-
-#### Candidates for Faculty Jobs
-* To give a good talk and get hired
-* Baishakhi Ray
-* Googling papers by the attending professors to cater to their interests
-* Emailing the faculty host to get an idea of what the schedule is like and and what the general topic should be
-* Reaching out privately to those who have interviewed previously for advice
-
-#### Computer Science Undergrads Interviewing For Jobs
-* To get hired to work in a situation they want to work in
-* Nick Puljic
-* Glassdoor etc. to find out about the working conditions at various companies
-* Reaching out to friends and acquaintances who have worked there or currently work there
-* Posting resumes and personal information on LinkedIn to attract potential employers
-
-#### TA's
-* To grade everything required for the class in the shortest period of time
-* Sarah Samuel
-* Contacting other TA's through slack or email for coordination on what each person will grade
-* Emailing students when they need something from the student that may have been forgotten and handling grade change requests
-* Checking Piazza for questions from the students and answering efficiently.
-
-#### Foreign Students Looking for Food
-* To find somewhere close to the school that has food which reminds them of home
-* Google/Yelp to find where possible restaurant options are
-* Use a phone to get directions and monitor your progress
-* Reaching out to other people who went through this experience for advice and suggestions.
+#### What 3 subgoals and states does user B go through
+1) User B views all the data to see what is available
+2) User B searches the data based on a specific criteria to see only what they are looking for
+3) User B chooses to buy the item that they prefer.
