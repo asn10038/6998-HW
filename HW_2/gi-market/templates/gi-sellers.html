@@ -31,11 +31,11 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{{ url_for('static', filename = 'gi-sellers.js') }}"></script>
 	<script>
         gi_list = {{ gi_list | tojson }};
         seller = {{ seller | tojson }}
      </script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'gi-sellers.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -76,7 +76,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                
                   <div class="form-group">
                       <p> <span class="form-label"> Seller: </span> <strong> {{ seller }}</strong> </p>
                       <label for="update-name"> <span class="form-label"> Gi Name</span></label>
@@ -98,7 +98,7 @@
                       <p> <span class="form-label"> Gi ID: </span> <strong> <span id="update-id"> </span></strong> </p>
                   </div>
                         <button class="btn btn-primary" id="update-gi">Update</button>
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -120,7 +120,6 @@
             </div>
             <div class="modal-body">
 
-                <form>
                   <div class="form-group">
                       <p> <span class="form-label"> Seller: </span> <strong> {{ seller }}</strong> </p>
                       <label for="enter-name"> <span class="form-label"> Gi Name</span></label>
@@ -128,7 +127,7 @@
                   </div>
                   <div class="form-group">
                       <label for="enter-description"><span class="form-label"> Description</span></label>
-                      <input type="text" class="form-control" id="enter-descrption" placeholder="Enter description">
+                      <input type="text" class="form-control" id="enter-description" placeholder="Enter description">
                   </div>
                   <div class="form-group">
                       <label for="enter-price"><span class="form-label"> Price in USD</span></label>
@@ -139,7 +138,6 @@
                       <input type="text" class="form-control" id="enter-image-url" placeholder="Enter Image URL">
                   </div>
                   <button class="btn btn-primary" id="submit-gi">Create</button>
-                </form>
 
             </div>
             <div class="modal-footer">

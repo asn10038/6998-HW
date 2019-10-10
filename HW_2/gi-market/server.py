@@ -293,8 +293,8 @@ def create_gi():
     gi_data["id"] = current_id
     current_id += 1
     gis.append(gi_data)
+    return jsonify(gi_list=get_gis_by_seller(gi_data["seller"]))
 
-    return jsonify(gi_list=gis)
 
 @app.route('/update_gi', methods=['GET', 'POST'])
 def gi_update():

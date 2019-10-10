@@ -80,7 +80,6 @@ function updateGi(id) {
 		    success: function(data, text){
                 gi_list = data["gi_list"];
                 displayGis(gi_list);
-                alert(" gi updated");
 
                 $('#update-seller').val("");
                 $('#update-name').val("");
@@ -130,6 +129,7 @@ function newGi() {
                 $('#enter-description').val("");
                 $('#enter-price').val("");
                 $('#enter-image-url').val("");
+                $('#createModal').modal('hide');
 		    },
 		    error: function(request, status, error){
 		    	console.log("Error");
@@ -153,6 +153,7 @@ function deleteGi(id) {
                 gi_list = data["gi_list"];
                 displayGis(gi_list);
                 console.log(gi_list);
+                alert("Gi " + id + " has beend deleted");
 		    },
 		    error: function(request, status, error){
 		    	console.log("Error");
